@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andro Kharchilava — Designer</title>
+
+    <style>
+        :root {
+            --bg: #0F172A;
+            --card: #111827;
+            --accent: #22C55E;
+            --accent2: #06B6D4;
+            --text: #E5E7EB;
+            --muted: #9CA3AF;
+            --border: #1F2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-size: 1.6rem;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: var(--muted);
+            margin-right: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .hero {
+            padding: 100px 0;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            max-width: 700px;
+            line-height: 1.2;
+        }
+
+        .hero span {
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            color: var(--muted);
+            max-width: 500px;
+        }
+
+        .availability-note {
+            display: block;
+            width: fit-content;
+            margin-top: 18px;
+            padding: 9px 14px;
+            border: 1px solid rgba(34, 197, 94, 0.35);
+            border-radius: 999px;
+            background: rgba(34, 197, 94, 0.08);
+            color: #bbf7d0;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            background: var(--accent);
+            color: black;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .hero .btn {
+            margin-top: 24px;
+        }
+
+        section {
+            margin: 80px 0;
+        }
+
+        h3.section-title {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card h4 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--muted);
+        }
+
+        .experience-links {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .experience-links a {
+            color: var(--accent2);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .experience-links a:hover {
+            color: white;
+        }
+
+        .copy-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .copy-card-content h4 {
+            margin-bottom: 6px;
+        }
+
+        .copy-card-content p {
+            margin: 0;
+            word-break: break-word;
+        }
+
+        .copy-btn {
+            border: 1px solid var(--border);
+            background: #0b1220;
+            color: var(--text);
+            border-radius: 999px;
+            padding: 10px 14px;
+            font: inherit;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            border-color: var(--accent2);
+            background: #101a2e;
+            transform: translateY(-1px);
+        }
+
+        .portfolio a {
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .portfolio-item {
+            overflow: hidden;
+            background: var(--card);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio a:hover .portfolio-item {
+            transform: translateY(-6px);
+            border-color: var(--accent2);
+            box-shadow: 0 18px 40px rgba(6, 182, 212, 0.12);
+        }
+
+        .portfolio-thumb {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1F2937, #111827);
+        }
+
+        .portfolio-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.45s ease;
+        }
+
+        .portfolio a:hover .portfolio-thumb img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-info {
+            padding: 18px;
+        }
+
+        .portfolio-meta {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent2);
+            margin-bottom: 8px;
+        }
+
+        .portfolio-info h4 {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .portfolio-info p {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="container">
+        <h1>Andro Kharchilava</h1>
+        <nav>
+            <a href="#">Work</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero container">
+        <h2>I design <span>brands & motion</span> that stand out in competitive markets.</h2>
+        <p>Graphic & Motion Designer specializing in packaging, branding, and high-converting visual content for digital platforms.</p>
+        <div class="availability-note">Available for freelance projects</div>
+        <a href="https://www.behance.net/androkharchi" class="btn">View Portfolio</a>
+    </section>
+
+    <section class="container">
+        <h3 class="section-title">Services</h3>
+        <div class="grid grid-3">
+            <div class="card">
+                <h4>Brand Identity</h4>
+                <p>Logos, visual systems, and brand strategy built to differentiate your product.</p>
+            </div>
+            <div class="card">
+                <h4>Packaging Design</h4>
+                <p>Clean, premium packaging that sells on shelves and online.</p>
+            </div>
+            <div class="card">
+                <h4>Motion Graphics</h4>
+                <p>Animations and ads designed to capture attention instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h3 class="section-title">Recent Projects</h3>
+        <div class="grid grid-3 portfolio">
+            <a href="https://www.behance.net/gallery/245693503/SUPPLEMENT-PACKAGING-DESIGN" target="_blank" rel="noopener noreferrer">
+                <div class="portfolio-item">
+                    <div class="portfolio-thumb">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/3648e2245693503.Y3JvcCwyNzgwLDIxNzQsMjY3Nyw0OA.png" alt="Supplement packaging design preview">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-meta">Packaging Design</span>
+                        <h4>Supplement Packaging</h4>
+                        <p>Premium supplement packaging with a clean shelf-ready look and strong product presence.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.behance.net/gallery/196195863/NomadGeo-The-Logo-Was-Crated-For-Future-Plan-C" target="_blank" rel="noopener noreferrer">
+                <div class="portfolio-item">
+                    <div class="portfolio-thumb">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/7bc768196195863.6910f6bac3ad3.jpg" alt="NomadGeo logo preview">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-meta">Brand Identity</span>
+                        <h4>NomadGeo</h4>
+                        <p>A logo concept built for a future-facing brand with a sharp, memorable silhouette.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.behance.net/gallery/228023831/Brelnear-Online-Shop" target="_blank" rel="noopener noreferrer">
+                <div class="portfolio-item">
+                    <div class="portfolio-thumb">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/6f0074228023831.Y3JvcCw1NjgzLDQ0NDUsMCww.jpg" alt="Brelnear online shop preview">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-meta">E-Commerce Design</span>
+                        <h4>Brelnear</h4>
+                        <p>An online shop concept that broadens the portfolio with commercial layout and retail visuals.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.behance.net/gallery/238752673/Real-Estate-Social-Media-Post-Design" target="_blank" rel="noopener noreferrer">
+                <div class="portfolio-item">
+                    <div class="portfolio-thumb">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9d54c1238752673.Y3JvcCwyMjE0LDE3MzIsMzE5MCwyNzk.jpg" alt="Real estate social media design preview">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-meta">Marketing Design</span>
+                        <h4>Real Estate Ads</h4>
+                        <p>Property-focused creative with premium composition and clear conversion-first hierarchy.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.behance.net/gallery/238180877/Social-Media-Post-Design-Auto-Dealer" target="_blank" rel="noopener noreferrer">
+                <div class="portfolio-item">
+                    <div class="portfolio-thumb">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/4b1161238180877.Y3JvcCwyNjExLDIwNDIsMjk1NCwxMzU.jpg" alt="Auto dealer campaign preview">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-meta">Social Campaign</span>
+                        <h4>Auto Dealer</h4>
+                        <p>Fast-scrolling ad creative designed to stop attention and sell the offer instantly.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.behance.net/gallery/238139477/Fast-food-social-media-post-design" target="_blank" rel="noopener noreferrer">
+                <div class="portfolio-item">
+                    <div class="portfolio-thumb">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/b7d2b8238139477.Y3JvcCwyNjU0LDIwNzYsMjg1OCww.jpg" alt="Fast-food social media post preview">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-meta">Food Promo</span>
+                        <h4>Fast-Food Campaign</h4>
+                        <p>Bold offer-driven visuals made for social feeds, promos, and quick audience response.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.behance.net/gallery/223493949/iPhone-17" target="_blank" rel="noopener noreferrer">
+                <div class="portfolio-item">
+                    <div class="portfolio-thumb">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/4056f4223493949.Y3JvcCwxNzQxLDEzNjEsNDUyLDI5Nw.png" alt="iPhone 17 preview">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-meta">Product Visual</span>
+                        <h4>iPhone 17</h4>
+                        <p>Clean, high-contrast product presentation with a polished launch-style feel.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.behance.net/gallery/222601105/XYBER-Y1" target="_blank" rel="noopener noreferrer">
+                <div class="portfolio-item">
+                    <div class="portfolio-thumb">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/3f489c222601105.Y3JvcCw3OTk5LDYyNTcsMCw0OTMw.jpg" alt="XYBER Y1 concept preview">
+                    </div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-meta">Concept Design</span>
+                        <h4>XYBER Y1</h4>
+                        <p>A futuristic concept piece that adds range and visual depth to the portfolio mix.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="container">
+        <h3 class="section-title">Recent Experience</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>VITAMIN POWER</h4>
+                <p> Graphic, Product Designer & Motion Designer </p>
+                <div class="experience-links">
+                    <a href="https://www.instagram.com/vitaminpower_georgia?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=100072102906087&amp;ref=NONE_xav_ig_profile_page_web" target="_blank" rel="noopener noreferrer">Facebook</a>
+                </div>
+            </div>
+            <div class="card">
+                <h4>Vitamini.ge</h4>
+                <p>Graphic Designer</p>
+                <div class="experience-links">
+                    <a href="https://www.instagram.com/vitamini.ge/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.facebook.com/www.vitamini.ge/?ref=PROFILE_EDIT_xav_ig_profile_page_web" target="_blank" rel="noopener noreferrer">Facebook</a>
+                </div>
+            </div>
+            <div class="card">
+                <h4>Newtone</h4>
+                <p>CEO, Motion & Graphic Designer</p>
+                <div class="experience-links">
+                    <a href="https://www.facebook.com/profile.php?id=61586010266386" target="_blank" rel="noopener noreferrer">Facebook</a>
+                    <a href="https://www.instagram.com/newtone_indigital/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h3 class="section-title">Contact</h3>
+        <div class="grid">
+            <div class="card copy-card">
+                <div class="copy-card-content">
+                    <h4>Email</h4>
+                    <p>akkhaechilava@gmail.com</p>
+                </div>
+                <button class="copy-btn" type="button" data-copy-text="akkhaechilava@gmail.com">Copy</button>
+            </div>
+            <div class="card copy-card">
+                <div class="copy-card-content">
+                    <h4>Phone</h4>
+                    <p>+995 568 427 692</p>
+                </div>
+                <button class="copy-btn" type="button" data-copy-text="+995 568 427 692">Copy</button>
+            </div>
+            <div class="card">Tbilisi, Georgia</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Andro Kharchilava</p>
+    </footer>
+
+    <script>
+        const copyButtons = document.querySelectorAll(".copy-btn");
+
+        copyButtons.forEach((button) => {
+            const defaultLabel = button.textContent;
+
+            button.addEventListener("click", async () => {
+                const text = button.dataset.copyText;
+
+                try {
+                    await navigator.clipboard.writeText(text);
+                    button.textContent = "Copied";
+
+                    setTimeout(() => {
+                        button.textContent = defaultLabel;
+                    }, 1400);
+                } catch (error) {
+                    button.textContent = "Failed";
+
+                    setTimeout(() => {
+                        button.textContent = defaultLabel;
+                    }, 1400);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
